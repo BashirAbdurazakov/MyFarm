@@ -28,6 +28,7 @@ public class MainApp {
                     "\n4 - Накормить животных "+
                     "\n5 - Поесть"+
                     "\n0 - Выйти из игры");
+            //test git push
             int choice = scanner.nextInt();
             Thread thread = null;
             switch (choice) {
