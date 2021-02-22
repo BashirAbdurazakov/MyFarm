@@ -113,7 +113,6 @@ public class MainApp extends Application {
         stage.setTitle("Hello JavaFX");
         stage.setWidth(700);
         stage.setHeight(500);
-
         stage.show();
     }
 }
