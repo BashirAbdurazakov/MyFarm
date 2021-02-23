@@ -1,6 +1,7 @@
 package com.exam.main;
 
 import com.exam.main.items.base.Rock;
+import com.exam.main.player.Player;
 import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
@@ -53,8 +54,17 @@ public class MainController {
     @FXML
     private TextArea dialogViewLabel;
 
-    boolean isAlive = false;
+    @FXML
+    private Label completeTaskLable;
 
+    @FXML
+    private Button completeTaskButton;
+
+    volatile boolean isAlive = true;
+
+    private Task task;
+
+    private static final Player player = new Player("Player");
 
     @FXML
     void initialize() {
@@ -64,19 +74,23 @@ public class MainController {
         resourceExtractionButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Task task = new Task<Void>() {
+                task = new Task<Void>() {
                     @Override public Void call() throws InterruptedException {
-
+                        completeTaskLable.setVisible(true);
+                        completeTaskButton.setVisible(true);
                         final int max = 10;
-                        for (int i=1; i<=max; i++) {
+                        for (int i=1; i<=max; /*i++*/) {
                             if (isCancelled()) {
                                 break;
                             }
+                            player.findItems(dialogViewLabel);
+                            System.out.println(isAlive);
 //                            viewMessages.append(i).append("\n");
 //                            updateMessage(viewMessages.toString());
-                            dialogViewLabel.appendText(i + "\n");
-                            Thread.sleep(300);
+//                            dialogViewLabel.appendText(i + "\n");
+//                            Thread.sleep(500);
                         }
+                        isAlive = true;
                         return null;
                     }
                 };
@@ -86,7 +100,11 @@ public class MainController {
             }
         });
 
-
-
+        completeTaskButton.setOnAction(event -> {
+            task.cancel();
+            isAlive = false;
+            completeTaskLable.setVisible(false);
+            completeTaskButton.setVisible(false);
+        });
     }
 }

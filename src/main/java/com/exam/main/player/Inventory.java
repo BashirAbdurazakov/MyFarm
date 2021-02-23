@@ -2,6 +2,7 @@ package com.exam.main.player;
 
 import com.exam.main.items.Item;
 import com.exam.main.items.basic_item.Branch;
+import javafx.scene.control.TextArea;
 
 import java.util.*;
 
@@ -28,10 +29,12 @@ public class Inventory {
         this.items = items;
     }
 
-    public void putItem(String nameItem){
+    public void putItem(String nameItem, TextArea dialogView){
         Item item = items.get(nameItem);
         item.addItem();
-        System.out.println("Игрок нашел предмет: " + nameItem + " и положил его в инвертарь");
-        System.out.println("Всего " + nameItem + ": " + item.getCount());
+        dialogView.appendText("Игрок нашел предмет: " + nameItem + " и положил его в инвертарь\n");
+        dialogView.appendText("Всего " + nameItem + ": " + item.getCount() + "\n");
+//        System.out.println("Игрок нашел предмет: " + nameItem + " и положил его в инвертарь");
+//        System.out.println("Всего " + nameItem + ": " + item.getCount());
     }
 }

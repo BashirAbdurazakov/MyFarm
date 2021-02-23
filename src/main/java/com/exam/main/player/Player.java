@@ -1,15 +1,19 @@
 package com.exam.main.player;
 
+import com.exam.main.MainController;
 import com.exam.main.MyEnum;
 import com.exam.main.items.basic_item.Branch;
 import com.exam.main.items.basic_item.Grass;
 import com.exam.main.items.Item;
 import com.exam.main.items.basic_item.Stone;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javafx.scene.control.TextArea;
 
 public class Player {
     private String name;
@@ -18,7 +22,7 @@ public class Player {
 //    private Map<String, List<Item>> inventory;
     private Inventory inventory;
 
-    public Player(String name, int health, List<Item> items) {
+    public Player(String name, int health, List<Item> items, TextArea dialogView) {
         this.name = name;
         this.health = health;
         this.items = items;
@@ -70,7 +74,7 @@ public class Player {
         System.out.println("Игрок: " + name + " был создан");
     }
 
-    public void findItems(){
+    public void findItems(TextArea dialogView){
 //        Random random = new Random();
         try {
             TimeUnit.SECONDS.sleep(randomNumberWithMinMax(2, 5));
@@ -96,19 +100,27 @@ public class Player {
 //            }
             switch (randomNumberWithMinMax(1,4)){
                 case 1 :
-                    inventory.putItem("ветка");
+                    inventory.putItem("ветка", dialogView);
+//                    dialogView.appendText(name + " нашел предмет: " + "ветка" + " и положил его в инвертарь");
                     break;
                 case 2 :
-                    inventory.putItem("grass");
+                    inventory.putItem("grass", dialogView);
+//                    dialogView.appendText(name + " нашел предмет: " + "grass" + " и положил его в инвертарь");
                     break;
                 case 3:
-                    inventory.putItem("stone");
+                    inventory.putItem("stone", dialogView);
+//                    dialogView.appendText(name + " нашел предмет: " + "stone" + " и положил его в инвертарь");
+
                     break;
                 default:
-                    System.out.println( name + " ничего не нашел, потому что пидр!!!");
+//                    System.out.println( name + " ничего не нашел, потому что пидр!!!");
+                    dialogView.appendText(name + " ничего не нашел, потому что пидр!!!\n");
+//                    dialogView.appendText(name + " ничего не нашел, потому что пидр!!!");
+                    break;
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("Звершили добычу");
         }
     }
 

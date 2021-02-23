@@ -9,9 +9,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #BF7130;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.exam.main.MainController">
     <children>
-        <AnchorPane layoutY="110.0" prefHeight="390.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+        <AnchorPane layoutY="74.0" prefHeight="426.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
             <children>
-                <Label fx:id="textViewLabel" alignment="CENTER" layoutX="250.0" layoutY="49.0" prefHeight="32.0" prefWidth="262.0" text="Диалоговое окно" textAlignment="JUSTIFY">
+                <Label fx:id="textViewLabel" alignment="CENTER" layoutX="236.0" layoutY="-4.0" prefHeight="32.0" prefWidth="262.0" text="Диалоговое окно" textAlignment="JUSTIFY">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -20,14 +20,16 @@
                   <Button fx:id="resourceExtractionButton" layoutX="47.0" layoutY="108.0" mnemonicParsing="false" text="Добывать ресурсы" textAlignment="CENTER" />
                   <Button fx:id="buildButton" layoutX="47.0" layoutY="155.0" mnemonicParsing="false" text="Построить" />
                   <Button fx:id="createButton" layoutX="47.0" layoutY="205.0" mnemonicParsing="false" text="Создать" />
-            <Pane layoutX="238.0" layoutY="81.0" prefHeight="279.0" prefWidth="287.0">
+            <Pane layoutX="182.0" layoutY="28.0" prefHeight="279.0" prefWidth="370.0">
                <children>
-                  <TextArea fx:id="dialogViewLabel"  prefHeight="279.0" prefWidth="287.0" />
+                  <TextArea fx:id="dialogViewLabel" prefHeight="279.0" prefWidth="370.0" />
                </children>
             </Pane>
+            <Label fx:id="completeTaskLable" layoutX="405.0" layoutY="319.0" text="Завершить задачу ?" visible="false" />
+            <Button fx:id="completeTaskButton" layoutX="434.0" layoutY="342.0" mnemonicParsing="false" text="Да" visible="false" />
             </children>
         </AnchorPane>
-        <Label fx:id="nameGameView" layoutX="243.0" layoutY="14.0" prefHeight="62.0" prefWidth="297.0" text="My Farm" textAlignment="CENTER" textFill="#7cff00">
+        <Label fx:id="nameGameView" layoutX="241.0" prefHeight="62.0" prefWidth="297.0" text="My Farm" textAlignment="CENTER" textFill="#7cff00">
             <font>
                 <Font name="Arial Black" size="48.0" />
             </font>
