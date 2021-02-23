@@ -74,29 +74,33 @@ public class MainController {
         resourceExtractionButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                task = new Task<Void>() {
-                    @Override public Void call() throws InterruptedException {
-                        completeTaskLable.setVisible(true);
-                        completeTaskButton.setVisible(true);
-                        final int max = 10;
-                        for (int i=1; i<=max; /*i++*/) {
-                            if (isCancelled()) {
-                                break;
-                            }
-                            player.findItems(dialogViewLabel);
-                            System.out.println(isAlive);
+                if (task == null || task.isDone()) {
+                    task = new Task<Void>() {
+                        @Override
+                        public Void call() throws InterruptedException {
+                            completeTaskLable.setVisible(true);
+                            completeTaskButton.setVisible(true);
+                            dialogViewLabel.appendText(player.getName() + " начал добычу ресурсов...\n");
+
+                            final int max = 10;
+                            for (int i = 1; true; /*i++*/) {
+                                if (isCancelled()) {
+                                    break;
+                                }
+                                player.findItems(dialogViewLabel);
+                                System.out.println(isAlive);
 //                            viewMessages.append(i).append("\n");
 //                            updateMessage(viewMessages.toString());
 //                            dialogViewLabel.appendText(i + "\n");
 //                            Thread.sleep(500);
+                            }
+                            return null;
                         }
-                        isAlive = true;
-                        return null;
-                    }
-                };
+                    };
 
 //                dialogViewLabel.textProperty().bind(task.messageProperty());
-                new Thread(task).start();
+                    new Thread(task).start();
+                }
             }
         });
 

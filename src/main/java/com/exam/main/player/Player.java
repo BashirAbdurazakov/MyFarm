@@ -120,7 +120,8 @@ public class Player {
             }
         } catch (InterruptedException e) {
 //            e.printStackTrace();
-            System.out.println("Звершили добычу");
+//            System.out.println("Звершили добычу");
+            dialogView.appendText("Добыча ресурсов завершена\n");
         }
     }
 
